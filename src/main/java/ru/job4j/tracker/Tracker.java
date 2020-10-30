@@ -26,12 +26,11 @@ public class Tracker {
     public boolean replace(int id, Item item) {
         int index = indexOf(id);
         boolean valid = indexOf(id) != -1;
-        if (index != -1) {
+        if (valid) {
             item.setId(id);
             items[index] = item;
-            return true;
         }
-        return false;
+        return valid;
     }
 
     public boolean delete(int id) {
@@ -43,9 +42,8 @@ public class Tracker {
             }
             items[size - 1] = null;
             size--;
-            return true;
         }
-        return false;
+        return valid;
     }
 
     public Item findById(int id) {
