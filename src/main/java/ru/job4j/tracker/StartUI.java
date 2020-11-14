@@ -42,11 +42,10 @@ public class StartUI {
                 System.out.println("=== Edit item ===");
                 System.out.println("Enter id:");
                 int id = Integer.valueOf(scanner.nextLine());
-                Item item = tracker.findById(id);
+                System.out.println("=== Enter New name ===");
+                String newName = scanner.nextLine();
+                Item item = new Item(newName);
                 if (tracker.replace(id, item)) {
-                    System.out.println("=== Enter New name ===");
-                    String newName = scanner.nextLine();
-                    item.setName(newName);
                     System.out.println("Item №" + id + " has been sucessfully edited");
                 } else {
                     System.out.println("Item is not found");
