@@ -43,12 +43,10 @@ public class StartUI {
                 System.out.println("Enter id:");
                 int id = Integer.valueOf(scanner.nextLine());
                 Item item = tracker.findById(id);
-                if (item != null) {
+                if (tracker.replace(id, item)) {
                     System.out.println("=== Enter New name ===");
                     String newName = scanner.nextLine();
                     item.setName(newName);
-                }
-                if (tracker.replace(id, item)) {
                     System.out.println("Item №" + id + " has been sucessfully edited");
                 } else {
                     System.out.println("Item is not found");
@@ -57,9 +55,7 @@ public class StartUI {
                 System.out.println("=== Delete item ===");
                 System.out.println("Enter id:");
                 int id = Integer.valueOf(scanner.nextLine());
-                Item item = tracker.findById(id);
-                if (item != null) {
-                    tracker.delete(id);
+                if (tracker.delete(id)) {
                     System.out.println("Item №" + id + " has been sucessfully deleted");
                 } else {
                     System.out.println("Item is not found");
