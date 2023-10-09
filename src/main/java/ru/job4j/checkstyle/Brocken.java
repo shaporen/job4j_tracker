@@ -19,8 +19,6 @@ public class Brocken {
     void method(int a, int b, int c, int d, int e, int f) {
 
     }
-
     String name;
-
     Brocken() { }
 }
