@@ -12,6 +12,11 @@
     <!-- See http://checkstyle.sf.net/config_sizes.html -->
     <module name="FileLength"/>
 
+    <!-- Line lenght. Default: 80 lines-->
+    <module name="LineLength">
+        <property name="fileExtensions" value="java"/>
+        <property name="max" value="100"/>
+    </module>
     <!-- Checks for Headers                                -->
     <!-- See http://checkstyle.sf.net/config_header.html   -->
     <!-- <module name="Header"> -->
@@ -20,7 +25,9 @@
     <!-- </module> -->
 
     <module name="TreeWalker">
-
+        <!-- Check that the parts of a class, record, or interface declaration -->
+        <!-- aapear in the order suggested by the Java Code conventions -->
+        <module name="DeclarationOrder"/>
         <module name="EmptyLineSeparator"> <!-- Java Style Guide: Source file structure -->
             <property name="tokens" value="
             CLASS_DEF, ENUM_DEF, INTERFACE_DEF, CTOR_DEF, STATIC_INIT, INSTANCE_INIT, VARIABLE_DEF, METHOD_DEF"/>
