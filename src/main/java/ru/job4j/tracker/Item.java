@@ -12,8 +12,7 @@ public class Item {
         return created;
     }
 
-    public Item() {
-    }
+    public Item() { }
 
     public Item(String name) {
         this.name = name;
