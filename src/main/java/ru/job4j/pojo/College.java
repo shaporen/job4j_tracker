@@ -10,7 +10,7 @@ public class College {
         student.setGroup("Электроэнергетический факультет");
         Date date = new Date(2005, Calendar.SEPTEMBER, 1);
         student.setDateOfReceipt(date);
-        System.out.println("Студент " + student.getFullName() + " поступил на " +
-                student.getGroup() + " " + student.getDateOfReceipt());
+        System.out.println("Студент " + student.getFullName() + " поступил на "
+                + student.getGroup() + " " + student.getDateOfReceipt());
     }
 }
