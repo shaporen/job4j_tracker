@@ -23,6 +23,11 @@ public class Product {
         return count == product.count && Objects.equals(name, product.name);
     }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+
     public String getName() {
         return name;
     }
