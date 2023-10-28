@@ -31,9 +31,9 @@ public class Tracker {
     public Item[] findAll() {
         Item[] rsl = new Item[items.length];
         size = 0;
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null) {
-                rsl[size] = items[i];
+        for (Item item : items) {
+            if (item != null) {
+                rsl[size] = item;
                 size++;
             }
         }
@@ -63,7 +63,8 @@ public class Tracker {
     }
 
     public void delete(int id) {
-        if (indexOf(id) != -1) {
+        boolean rsl = indexOf(id) != -1;
+        if (rsl) {
             System.arraycopy(items, indexOf(id) + 1, items, indexOf(id), size - 1 - indexOf(id));
             items[size - 1] = null;
             size--;
