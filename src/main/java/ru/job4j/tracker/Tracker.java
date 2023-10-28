@@ -61,4 +61,12 @@ public class Tracker {
         }
         return rsl;
     }
+
+    public void delete(int id) {
+        if (indexOf(id) != -1) {
+            System.arraycopy(items, indexOf(id) + 1, items, indexOf(id), size - 1 - indexOf(id));
+            items[size - 1] = null;
+            size--;
+        }
+    }
 }
