@@ -4,7 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Item {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
+    private static final DateTimeFormatter FORMATTER
+            = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
     private int id;
     private String name;
 
