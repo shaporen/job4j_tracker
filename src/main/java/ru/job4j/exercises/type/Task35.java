@@ -8,8 +8,4 @@ public class Task35 {
         num3 = number % 10;
         System.out.println(num3 * 100 + num2 * 10 + num1);
     }
-
-    public static void main(String[] args) {
-        firstLastChange(521);
-    }
 }
