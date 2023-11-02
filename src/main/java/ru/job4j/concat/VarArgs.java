@@ -1,7 +1,7 @@
 package ru.job4j.concat;
 
 public class VarArgs {
-    public static String text(String...strings) {
+    public static String text(String... strings) {
         StringBuilder builder = new StringBuilder();
         for (String s: strings) {
             builder.append(s);
