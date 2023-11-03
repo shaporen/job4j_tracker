@@ -13,16 +13,16 @@ public class Matches {
             System.out.println(player + " введите число от 1 до 3:");
             int matches = Integer.parseInt(input.nextLine());
             boolean move = matches >= 1 && matches <= 3;
-            if (count >= matches) {
-                if (move) {
+            if (move) {
+                if (count >= matches) {
                     count -= matches;
                     turn = !turn;
                 } else {
-                    System.out.println(player
-                            + ", введенное число выходит из диапазона возможных (1-3)");
+                    System.out.println(player + ", введенное число больше остатка");
                 }
             } else {
-                System.out.println(player + ", введенное число больше остатка");
+                System.out.println(player
+                        + ", введенное число выходит из диапазона возможных (1-3)");
             }
             System.out.println("Осталось спичек: " + count);
         }
