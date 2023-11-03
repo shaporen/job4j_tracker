@@ -12,13 +12,13 @@ public class Matches {
             String player = turn ? "Первый игрок" : "Второй игрок";
             System.out.println(player + " введите число от 1 до 3:");
             int matches = Integer.parseInt(input.nextLine());
+            boolean move = matches >= 1 && matches <= 3;
             if (count >= matches) {
-                switch (matches) {
-                    case 1, 2, 3 -> {
-                        count -= matches;
-                        turn = !turn;
-                    }
-                    default -> System.out.println(player
+                if (move) {
+                    count -= matches;
+                    turn = !turn;
+                } else {
+                    System.out.println(player
                             + ", введенное число выходит из диапазона возможных (1-3)");
                 }
             } else {
