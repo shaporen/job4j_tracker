@@ -6,7 +6,7 @@ public class SumWithStopEl {
         for (int i = 0; data[i] < el; i++) {
             cnt += data[i];
         }
-        return cnt % 2 != 0? 0 : cnt;
+        return cnt % 2 != 0 ? 0 : cnt;
     }
 
     public static void main(String[] args) {

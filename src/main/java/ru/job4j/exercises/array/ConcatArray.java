@@ -16,6 +16,6 @@ public class ConcatArray {
     public static void main(String[] args) {
         int[] a = {5, -2, 6};
         int[] b = {5, -2, 6, 0};
-        System.out.println(combineSize(a,b));
+        System.out.println(combineSize(a, b));
     }
 }
