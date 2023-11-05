@@ -7,7 +7,7 @@ public class ArrayWithoutEvenElements {
         int size = 0;
         int[] array = new int[data.length];
         for (int a : data) {
-            if (a % 2 !=0) {
+            if (a % 2 != 0) {
                 array[size++] = a;
             }
         }
