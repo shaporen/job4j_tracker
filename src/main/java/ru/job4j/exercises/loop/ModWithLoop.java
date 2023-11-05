@@ -12,6 +12,6 @@ public class ModWithLoop {
     }
 
     public static void main(String[] args) {
-        System.out.println(mod(0,3));
+        System.out.println(mod(0, 3));
     }
 }
