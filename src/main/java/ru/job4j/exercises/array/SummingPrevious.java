@@ -21,7 +21,7 @@ public class SummingPrevious {
     }
 
     public static void main(String[] args) {
-        int [] array = calculate(1, 2, 5);
+        int[] array = calculate(1, 2, 5);
         for (int arr : array) {
             System.out.println(arr);
         }
