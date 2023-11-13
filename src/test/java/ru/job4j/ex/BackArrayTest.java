@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BackArrayTest {
 
     @Test
-    void whenInputArrayHasEvenAmountElements() {
+    public void whenInputArrayHasEvenAmountElements() {
         String[] names = {"Petr", "Ivan", "Nik", "Vasya"};
         String[] result = new BackArray().turn(names);
         String[] expected = {"Vasya", "Nik", "Ivan", "Petr"};
@@ -15,7 +15,7 @@ class BackArrayTest {
     }
 
     @Test
-    void whenInputArrayHasNotEvenAmountElements() {
+    public void whenInputArrayHasNotEvenAmountElements() {
         String[] names = {"Petr", "Ivan", "Andrey", "Nik", "Vasya"};
         String[] result = new BackArray().turn(names);
         String[] expected = {"Vasya", "Nik", "Andrey", "Ivan", "Petr"};
