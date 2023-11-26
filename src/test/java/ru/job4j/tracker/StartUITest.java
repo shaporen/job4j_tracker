@@ -1,6 +1,12 @@
 package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.tracker.action.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.MockInput;
+import ru.job4j.tracker.output.ConsoleOutput;
+import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.output.StubOutput;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -14,8 +20,8 @@ class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(output),
-                new ExitAction(output)
+                new Create(output),
+                new Exit(output)
         };
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName()).isEqualTo("Item name");
@@ -31,8 +37,8 @@ class StartUITest {
                 new String[] {"0", String.valueOf(item.getId()), replacedName, "1"}
         );
         UserAction[] actions = {
-                new ReplaceAction(output),
-                new ExitAction(output)
+                new Replace(output),
+                new Exit(output)
         };
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo(replacedName);
@@ -47,8 +53,8 @@ class StartUITest {
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
         UserAction[] actions = {
-                new DeleteAction(output),
-                new ExitAction(output)
+                new Delete(output),
+                new Exit(output)
         };
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId())).isNull();
@@ -64,8 +70,8 @@ class StartUITest {
                 new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new ReplaceAction(out),
-                new ExitAction(out)
+                new Replace(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -91,8 +97,8 @@ class StartUITest {
                 new String[] {"0", "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindAllAction(out),
-                new ExitAction(out)
+                new FindAll(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -117,8 +123,8 @@ class StartUITest {
                 new String[] {"0", "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindAllAction(out),
-                new ExitAction(out)
+                new FindAll(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -144,8 +150,8 @@ class StartUITest {
                 new String[] {"0", one.getName(), "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindByNameAction(out),
-                new ExitAction(out)
+                new FindByName(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -172,8 +178,8 @@ class StartUITest {
                 new String[] {"0", findName, "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindByNameAction(out),
-                new ExitAction(out)
+                new FindByName(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -199,8 +205,8 @@ class StartUITest {
                 new String[] {"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{
-                new FindByIdAction(out),
-                new ExitAction(out)
+                new FindById(out),
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
@@ -225,7 +231,7 @@ class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = new UserAction[]{
-                new ExitAction(out)
+                new Exit(out)
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
