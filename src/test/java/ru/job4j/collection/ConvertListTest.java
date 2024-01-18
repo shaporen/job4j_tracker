@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 class ConvertListTest {
 
     @Test
-    public void whenTwoList() {
+    public void whenThreeList() {
         List<int[]> list = new ArrayList<>();
         list.add(new int[] {1});
         list.add(new int[] {2, 3});
