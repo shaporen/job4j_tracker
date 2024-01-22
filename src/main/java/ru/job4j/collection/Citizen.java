@@ -28,7 +28,8 @@ public class Citizen {
             return false;
         }
         Citizen citizen = (Citizen) o;
-        return Objects.equals(passport, citizen.passport) && Objects.equals(username, citizen.username);
+        return Objects.equals(passport, citizen.passport)
+                && Objects.equals(username, citizen.username);
     }
 
     @Override
