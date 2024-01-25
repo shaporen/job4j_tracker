@@ -22,7 +22,7 @@ public class AnalyzeByMap {
             for (Subject subject : pupil.subjects()) {
                 scoreSum += subject.score();
             }
-            score.add(new Label(pupil.name(), (double) scoreSum / pupils.size()));
+            score.add(new Label(pupil.name(), (double) scoreSum / pupil.subjects().size()));
         }
         return score;
     }
