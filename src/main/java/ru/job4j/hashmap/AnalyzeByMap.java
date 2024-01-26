@@ -43,6 +43,21 @@ public class AnalyzeByMap {
         return labels;
     }
 
+    public static Label sortToMax(List<Label> labels) {
+        for (int i = 0; i < labels.size(); i++) {
+            double min = labels.get(i).score();
+            int minId = i;
+            for (int j = i + 1; j < labels.size(); j++) {
+                if (labels.get(j).score() < min) {
+                    min = labels.get(j).score();
+                    minId = j;
+                }
+            }
+            Collections.swap(labels, i, minId);
+        }
+        return labels.get(labels.size() - 1);
+    }
+
     public static Label bestStudent(List<Pupil> pupils) {
         List<Label> score = new ArrayList<>();
         for (Pupil pupil : pupils) {
@@ -51,9 +66,8 @@ public class AnalyzeByMap {
                 scoreSum += subject.score();
             }
             score.add(new Label(pupil.name(), scoreSum));
-            score.sort(Comparator.naturalOrder());
         }
-        return score.get(score.size() - 1);
+        return sortToMax(score);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
@@ -68,7 +82,6 @@ public class AnalyzeByMap {
         for (String key : scoreBySubject.keySet()) {
             labels.add(new Label((key), scoreBySubject.get(key)));
         }
-        labels.sort(Comparator.naturalOrder());
-        return labels.get(labels.size() - 1);
+        return sortToMax(labels);
     }
 }
