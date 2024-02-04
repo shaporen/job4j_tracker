@@ -43,19 +43,16 @@ public class AnalyzeByMap {
         return labels;
     }
 
-    public static Label sortToMax(List<Label> labels) {
-        for (int i = 0; i < labels.size(); i++) {
-            double min = labels.get(i).score();
-            int minId = i;
-            for (int j = i + 1; j < labels.size(); j++) {
-                if (labels.get(j).score() < min) {
-                    min = labels.get(j).score();
-                    minId = j;
-                }
+    public static Label searchToMax(List<Label> labels) {
+        String maxName = labels.get(0).name();
+        double maxScore = labels.get(0).score();
+        for (int i = 1; i < labels.size(); i++) {
+            if (labels.get(i).score() > maxScore) {
+                maxName = labels.get(i).name();
+                maxScore = labels.get(i).score();
             }
-            Collections.swap(labels, i, minId);
         }
-        return labels.get(labels.size() - 1);
+        return new Label(maxName, maxScore);
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
@@ -67,7 +64,7 @@ public class AnalyzeByMap {
             }
             score.add(new Label(pupil.name(), scoreSum));
         }
-        return sortToMax(score);
+        return searchToMax(score);
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
@@ -82,6 +79,6 @@ public class AnalyzeByMap {
         for (String key : scoreBySubject.keySet()) {
             labels.add(new Label((key), scoreBySubject.get(key)));
         }
-        return sortToMax(labels);
+        return searchToMax(labels);
     }
 }
