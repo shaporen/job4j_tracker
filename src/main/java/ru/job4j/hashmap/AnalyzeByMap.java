@@ -44,12 +44,12 @@ public class AnalyzeByMap {
     }
 
     public static Label searchToMax(List<Label> labels) {
-        String maxName = labels.get(0).name();
-        double maxScore = labels.get(0).score();
-        for (int i = 1; i < labels.size(); i++) {
-            if (labels.get(i).score() > maxScore) {
-                maxName = labels.get(i).name();
-                maxScore = labels.get(i).score();
+        String maxName = null;
+        double maxScore = 0D;
+        for (Label label : labels) {
+            if (label.score() > maxScore) {
+                maxName = label.name();
+                maxScore = label.score();
             }
         }
         return new Label(maxName, maxScore);
