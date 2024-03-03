@@ -1,6 +1,8 @@
 package ru.job4j.stream;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.stream.looptostream.*;
+
 import java.util.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
