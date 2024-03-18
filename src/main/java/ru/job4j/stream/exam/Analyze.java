@@ -43,7 +43,7 @@ public class Analyze {
         Map<String, Double> map = stream
                 .flatMap(pupil -> pupil.subjects().stream())
                 .collect(Collectors.groupingBy(
-                        Subject::name, LinkedHashMap::new,
+                        Subject::name,
                         Collectors.averagingDouble(Subject::score)
                 ));
         return map
