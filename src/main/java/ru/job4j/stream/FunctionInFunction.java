@@ -13,7 +13,8 @@ public class FunctionInFunction {
 
             System.out.println("Result of squareFunction: " + squareFunction.apply(5));
 
-            // Использование функции высшего порядка для возведения числа в квадрат с помощью squareFunction
+            // Использование функции высшего порядка для возведения числа в квадрат с
+            // помощью squareFunction
             Function<Integer, Integer> squared = square(squareFunction);
             System.out.println("Result of squared: " + squared.apply(5));
         }
