@@ -8,13 +8,16 @@ public class FunctionInFunction {
         }
 
         public static void main(String[] args) {
-            // Функция, возводящая число в квадрат
+            /**
+             * Функция, возводящая число в квадрат
+             */
             Function<Integer, Integer> squareFunction = num -> num * num;
 
             System.out.println("Result of squareFunction: " + squareFunction.apply(5));
-
-            // Использование функции высшего порядка для возведения числа в квадрат с
-            // помощью squareFunction
+            /**
+            * Использование функции высшего порядка для возведения числа в квадрат с
+            * помощью squareFunction
+            */
             Function<Integer, Integer> squared = square(squareFunction);
             System.out.println("Result of squared: " + squared.apply(5));
         }
