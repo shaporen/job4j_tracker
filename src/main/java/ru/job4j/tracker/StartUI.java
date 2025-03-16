@@ -4,6 +4,7 @@ import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.*;
 import ru.job4j.tracker.output.*;
 
+import java.sql.*;
 import java.util.*;
 
 public class StartUI {
@@ -13,7 +14,7 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, List<UserAction> actions) {
+    public void init(Input input, Store memTracker, List<UserAction> actions) throws SQLException {
         boolean run = true;
         while (run) {
             showMenu(actions);
@@ -23,7 +24,7 @@ public class StartUI {
                 continue;
             }
             UserAction action = actions.get(select);
-            run = action.execute(input, tracker);
+            run = action.execute(input, memTracker);
         }
     }
 
@@ -34,10 +35,10 @@ public class StartUI {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
-        Tracker tracker = new Tracker();
+        Store memTracker = new SqlTracker();
         List<UserAction> actions = Arrays.asList(
                 new Create(output),
                 new FindAll(output),
@@ -47,6 +48,6 @@ public class StartUI {
                 new FindByName(output),
                 new Exit(output)
         );
-        new StartUI(output).init(input, tracker, actions);
+        new StartUI(output).init(input, memTracker, actions);
     }
 }

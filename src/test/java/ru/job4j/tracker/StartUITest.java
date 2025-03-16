@@ -2,23 +2,21 @@ package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.action.*;
-import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.input.MockInput;
-import ru.job4j.tracker.output.ConsoleOutput;
-import ru.job4j.tracker.output.Output;
-import ru.job4j.tracker.output.StubOutput;
+import ru.job4j.tracker.input.*;
+import ru.job4j.tracker.output.*;
 import java.util.*;
+import java.sql.*;
 import static org.assertj.core.api.Assertions.*;
 
 class StartUITest {
 
     @Test
-    public void whenCreateItem() {
+    public void whenCreateItem() throws SQLException {
         Output output = new ConsoleOutput();
         Input in = new MockInput(
                 new String[] {"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = Arrays.asList(
                 new Create(output),
                 new Exit(output)
@@ -28,9 +26,9 @@ class StartUITest {
     }
 
     @Test
-    public void whenReplaceItem() {
+    public void whenReplaceItem() throws SQLException {
         Output output = new ConsoleOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Replaced Item"));
         String replacedName = "New Item name";
         Input in = new MockInput(
@@ -45,9 +43,9 @@ class StartUITest {
     }
 
     @Test
-    void whenDeleteItem() {
+    void whenDeleteItem() throws SQLException {
         Output output = new ConsoleOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new MockInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
@@ -61,9 +59,9 @@ class StartUITest {
     }
 
     @Test
-    void whenReplaceItemTestOutputIsSuccessfully() {
+    void whenReplaceItemTestOutputIsSuccessfully() throws SQLException {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new MockInput(
@@ -89,9 +87,9 @@ class StartUITest {
     }
 
     @Test
-    void whenFindAllActionTestOutputIsSuccessfully() {
+    void whenFindAllActionTestOutputIsSuccessfully() throws SQLException {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new MockInput(
                 new String[] {"0", "1"}
@@ -116,9 +114,9 @@ class StartUITest {
     }
 
     @Test
-    void whenFindAllActionTestOutputIsNotSuccessfully() {
+    void whenFindAllActionTestOutputIsNotSuccessfully() throws SQLException {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
                 Input in = new MockInput(
                 new String[] {"0", "1"}
         );
@@ -142,9 +140,9 @@ class StartUITest {
     }
 
     @Test
-    void whenFindByNameActionTestOutputIsSuccessfully() {
+    void whenFindByNameActionTestOutputIsSuccessfully() throws SQLException {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new MockInput(
                 new String[] {"0", one.getName(), "1"}
@@ -169,9 +167,9 @@ class StartUITest {
     }
 
     @Test
-    void whenFindByNameActionTestOutputIsNotSuccessfully() {
+    void whenFindByNameActionTestOutputIsNotSuccessfully() throws SQLException {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         String findName = "New Test Name";
         Input in = new MockInput(
@@ -197,9 +195,9 @@ class StartUITest {
     }
 
     @Test
-    void whenFindByIdActionTestOutputIsSuccessfully() {
+    void whenFindByIdActionTestOutputIsSuccessfully() throws SQLException {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new MockInput(
                 new String[] {"0", String.valueOf(one.getId()), "1"}
@@ -224,12 +222,12 @@ class StartUITest {
     }
 
     @Test
-    public void whenInvalidExit() {
+    public void whenInvalidExit() throws SQLException {
         Output out = new StubOutput();
         Input in = new MockInput(
                 new String[] {"9", "0"}
         );
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         List<UserAction> actions = Arrays.asList(
                 new Exit(out)
         );
